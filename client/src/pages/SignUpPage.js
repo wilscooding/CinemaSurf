@@ -36,7 +36,7 @@ const SignUpPage = () => {
 
             {
               !showPassword ? (
-                <button>Get Started</button>
+                <button onClick={()=>setShowPassword(true)}>Get Started</button>
 
               ):<button>Sign up</button>
             }
@@ -87,6 +87,7 @@ const Container = styled.div`
 		.form {
 			display: grid;
 			width: 60%;
+      grid-template-columns: ${({showPassword})=>showPassword? "1fr 1fr" : "2fr 1fr"};
 			input {
 				color: black;
 				padding: 1.5rem;
