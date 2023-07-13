@@ -31,7 +31,7 @@ const Wrapper = styled.div`
 		position: absolute;
 		top: 0;
 		left: 0;
-		background-color: rgba(0, 0, 0, 0.79);
+		background-color: rgba(0, 0, 0, 0.6);
 		height: 100vh;
 		width: 100vw;
 		grid-template-columns: 15vh 85vh;
@@ -49,7 +49,7 @@ const Wrapper = styled.div`
 			align-items: center;
 			justify-content: center;
 			gap: 2rem;
-			background-color: #000000b0;
+			background-color: rgba(0, 0, 0, 0.83);
 			border-radius: 0.4rem;
 			padding: 2rem;
 			color: white;
@@ -73,7 +73,7 @@ const Wrapper = styled.div`
 				cursor: pointer;
 				color: white;
 				border-radius: 0.4rem;
-				height: 3.4rem;
+				height: 2.4rem;
 				font-weight: bolder;
 				font-size: 1.05rem;
 			}
