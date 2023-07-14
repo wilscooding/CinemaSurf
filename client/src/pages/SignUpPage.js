@@ -1,10 +1,39 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+import {
+	createUserWithEmailAndPassword,
+	onAuthStateChanged,
+} from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+
 import Header from "../components/Header";
 import BackgroundImage from "../components/BackgroundImage";
-import styled from "styled-components";
+import { firebaseAuth } from "../utils/firebase-config";
 
 const SignUpPage = () => {
 	const [showPassword, setShowPassword] = useState(false);
+	const [formValues, SetFormValues] = useState({ email: "", password: "" });
+
+	const navigate = useNavigate();
+
+	const handleSignIn = async () => {
+		try {
+			const { email, password } = formValues;
+			await createUserWithEmailAndPassword(
+				firebaseAuth,
+				email,
+				password
+			);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	onAuthStateChanged(firebaseAuth, (currentUser) => {
+		if (currentUser) {
+			navigate("/");
+		}
+	});
 	return (
 		<Container>
 			<BackgroundImage />
@@ -25,26 +54,36 @@ const SignUpPage = () => {
 								type="password"
 								placeholder="password"
 								name="password"
+								value={formValues.password}
+								onChange={(e) =>
+									SetFormValues({
+										...formValues,
+										[e.target.name]: e.target.value,
+									})
+								}
 							/>
 						) : (
 							<input
 								type="email"
 								placeholder="Enter Email"
 								name="email"
+								value={formValues.email}
+								onChange={(e) =>
+									SetFormValues({
+										...formValues,
+										[e.target.name]: e.target.value,
+									})
+								}
 							/>
 						)}
 
-            {
-              !showPassword ? (
-                <button onClick={()=>setShowPassword(true)}>Get Started</button>
-
-              ):<button>Sign up</button>
-            }
-
-
-
-
-
+						{!showPassword ? (
+							<button onClick={() => setShowPassword(true)}>
+								Get Started
+							</button>
+						) : (
+							<button onClick={handleSignIn}>Sign up</button>
+						)}
 					</div>
 				</div>
 			</div>
@@ -87,7 +126,8 @@ const Container = styled.div`
 		.form {
 			display: grid;
 			width: 60%;
-      grid-template-columns: ${({showPassword})=>showPassword? "1fr 1fr" : "2fr 1fr"};
+			grid-template-columns: ${({ showPassword }) =>
+				showPassword ? "1fr 1fr" : "2fr 1fr"};
 			input {
 				color: black;
 				padding: 1.5rem;
