@@ -1,7 +1,9 @@
 import React from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { firebaseAuth } from "../utils/firebase-config";
 
 const TopNav = ({ isScrolled }) => {
 	const navlinks = [
@@ -10,6 +12,13 @@ const TopNav = ({ isScrolled }) => {
 		{ name: "My List", link: "/mylist" },
 		{ name: "Movies", link: "/movie" },
 	];
+
+  const navigate = useNavigate()
+
+  onAuthStateChanged(firebaseAuth, (currentUser)=> {
+    if (!currentUser) navigate("/login");
+  });
+
 	return (
 		<NavContainer>
 			<nav className={`${isScrolled ? "scrolled" : "notScroll"}`}>
@@ -32,7 +41,7 @@ const TopNav = ({ isScrolled }) => {
 				</div>
 
 				<div className="rightSide">
-					<button>
+					<button onClick={()=>signOut(firebaseAuth)}>
 						<AiOutlineLogout />
 					</button>
 				</div>
