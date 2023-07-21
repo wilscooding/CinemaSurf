@@ -10,25 +10,26 @@ const CinemaSurf = () => {
 	};
 	return (
 		<div className="background">
-      <TopNav/>
+			<TopNav isScrolled={isScrolled} />
 			<img
 				src="https://res.cloudinary.com/ehizeex-shop/image/upload/v1668267540/NetflixApp/avengers-age-of-ultron-team-together-poster-wallpaper-1600x600-92751_84_qvwbif.jpg"
 				alt="background img"
 			/>
-      <img
+			<img
 				src="https://res.cloudinary.com/ehizeex-shop/image/upload/v1668267540/NetflixApp/avengers-age-of-ultron-team-together-poster-wallpaper-1600x600-92751_84_qvwbif.jpg"
 				alt="background img"
 			/>
-      <img
+			<img
 				src="https://res.cloudinary.com/ehizeex-shop/image/upload/v1668267540/NetflixApp/avengers-age-of-ultron-team-together-poster-wallpaper-1600x600-92751_84_qvwbif.jpg"
 				alt="background img"
 			/>
-      <img
+			<img
 				src="https://res.cloudinary.com/ehizeex-shop/image/upload/v1668267540/NetflixApp/avengers-age-of-ultron-team-together-poster-wallpaper-1600x600-92751_84_qvwbif.jpg"
 				alt="background img"
 			/>
 		</div>
 	);
 };
+
 
 export default CinemaSurf;
