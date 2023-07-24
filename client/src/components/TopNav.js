@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,11 +13,21 @@ const TopNav = ({ isScrolled }) => {
 		{ name: "Movies", link: "/movie" },
 	];
 
-  const navigate = useNavigate()
+	const navigate = useNavigate();
 
-  onAuthStateChanged(firebaseAuth, (currentUser)=> {
-    if (!currentUser) navigate("/login");
-  });
+	// onAuthStateChanged(firebaseAuth, (currentUser)=> {
+	//   if (!currentUser) navigate("/login");
+	// });
+
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(firebaseAuth, (currentUser) => {
+			if (!currentUser) {
+				navigate("/login");
+			}
+		});
+
+		return () => unsubscribe();
+	}, [navigate]);
 
 	return (
 		<NavContainer>
@@ -41,7 +51,7 @@ const TopNav = ({ isScrolled }) => {
 				</div>
 
 				<div className="rightSide">
-					<button onClick={()=>signOut(firebaseAuth)}>
+					<button onClick={() => signOut(firebaseAuth)}>
 						<AiOutlineLogout />
 					</button>
 				</div>
