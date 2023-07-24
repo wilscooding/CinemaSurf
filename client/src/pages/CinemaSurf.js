@@ -5,6 +5,7 @@ import { FaPlay } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 import TopNav from "../components/TopNav";
+import Card from "../components/Card";
 
 const CinemaSurf = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -35,6 +36,7 @@ const CinemaSurf = () => {
 					</div>
 				</div>
 			</div>
+        <Card/>
 		</HeroContainer>
 	);
 };
