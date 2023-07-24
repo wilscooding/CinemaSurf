@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import TopNav from "../components/TopNav";
 import styled from "styled-components";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { FaPlay } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
+import TopNav from "../components/TopNav";
 
 const CinemaSurf = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
+
+  const navigate = useNavigate()
 
 	window.onscroll = () => {
 		setIsScrolled(window.pageYOffset === 0 ? false : true);
@@ -26,7 +30,7 @@ const CinemaSurf = () => {
 						<p>A virtual movie theater in your pocket.</p>
 					</div>
 					<div className="buttons">
-						<button className="playBtn">Play</button>
+						<button onClick={()=>navigate("/player")} className="playBtn">Play</button>
 						<button className="moreBtn">More</button>
 					</div>
 				</div>
