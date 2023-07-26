@@ -6,7 +6,8 @@ import Player from "./pages/Player";
 import TvShow from "./pages/TvShow";
 import CinemaSurf from "./pages/CinemaSurf";
 import MoviePage from "./pages/MoviePage";
-import Header from "./components/Header";
+// import Header from "./components/Header";
+
 
 function App() {
 	return (
@@ -19,7 +20,6 @@ function App() {
 				<Route exact path="/" element={<CinemaSurf />} />
 				<Route exact path="/movie" element={<MoviePage />} />
 			</Routes>
-
 		</BrowserRouter>
 	);
 }
