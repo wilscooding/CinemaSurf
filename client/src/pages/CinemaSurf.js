@@ -11,6 +11,7 @@ const CinemaSurf = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const navigate = useNavigate();
 
+	const movies = useSelector((state)=> state.cinemaSurf.movies)
 	const generesLoaded = useSelector((state)=>state.cinemaSurf.generesLoaded)
 
 	const dispatch = useDispatch();

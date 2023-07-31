@@ -69,12 +69,12 @@ export const fetchMovies = createAsyncThunk(
 		const {
 			cinemaSurf: { genres },
 		} = myThunk.getState();
-		const data = getMovieData(
+		return getMovieData(
 			`${TMDB_BASE_URL}/trending/${type}/week?api_key=${MY_API_KEY}`,
 			genres,
 			true
 		);
-		console.log(data);
+		// console.log(data);
 	}
 );
 
