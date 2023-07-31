@@ -1,27 +1,34 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import {useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 
 import TopNav from "../components/TopNav";
 import Card from "../components/Card";
-import { getGenres } from "../store";
+import { fetchMovies, getGenres } from "../store";
 
 const CinemaSurf = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const navigate = useNavigate();
 
-	const dispatch = useDispatch()
+	const generesLoaded = useSelector((state)=>state.cinemaSurf.generesLoaded)
 
-	useEffect(()=>{
-		dispatch(getGenres())
-	},[])
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getGenres());
+	}, []);
+
+	useEffect(() => {
+		if (generesLoaded) {
+			dispatch(fetchMovies({ type: "all" }));
+		}
+	});
 
 	useEffect(() => {
 		const handleScroll = () => {
 			setIsScrolled(window.scrollY > 0);
 		};
-
 
 		window.addEventListener("scroll", handleScroll);
 
