@@ -25,6 +25,7 @@ const CinemaSurf = () => {
 			dispatch(fetchMovies({ type: "all" }));
 		}
 	});
+	
 
 	useEffect(() => {
 		const handleScroll = () => {
