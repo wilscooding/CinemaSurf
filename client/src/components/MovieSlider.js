@@ -1,8 +1,15 @@
 import React from 'react'
+import Card from './Card'
 
-const MovieSlider = () => {
+const MovieSlider = ({data, title}) => {
   return (
-    <div>MovieSlider</div>
+    <div className='slider'>
+      {
+        data.map((movie, index) =>{
+          return <Card movieData={movie} index={index} key={movie.id}/>
+        })
+      }
+    </div>
   )
 }
 

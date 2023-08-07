@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import TopNav from "../components/TopNav";
-import Card from "../components/Card";
 import { fetchMovies, getGenres } from "../store";
+import SliderContainer from "../components/SliderContainer";
 
 const CinemaSurf = () => {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -25,7 +25,7 @@ const CinemaSurf = () => {
 			dispatch(fetchMovies({ type: "all" }));
 		}
 	});
-	
+
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -64,7 +64,7 @@ const CinemaSurf = () => {
 					</div>
 				</div>
 			</div>
-			<Card />
+			<SliderContainer movies={movies}/>
 		</HeroContainer>
 	);
 };

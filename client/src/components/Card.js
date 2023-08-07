@@ -7,7 +7,7 @@ import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { BiChevronDown } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 
-const Card = () => {
+const Card = ({ movieData }) => {
 	const [Hover, setHover] = useState(false);
 	const navigate = useNavigate();
 	return (
@@ -16,8 +16,7 @@ const Card = () => {
 			onMouseLeave={() => setHover(false)}
 		>
 			<img
-				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaCor4AIV__zuNlgGZTSr424NdUudWBQKBrA&usqp=CAU://filmartgallery.com/cdn/shop/products/The-Avengers-Vintage-Movie-Poster-Original-1-Sheet-27x41_f7a83b7a-9d50-4743-b630-3fbd34b35e5a.jpg?v=1671051716"
-				alt="Movie Poster"
+				src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
 				onClick={() => navigate("/player")}
 			/>
 			{Hover && (
