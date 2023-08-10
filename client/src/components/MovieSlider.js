@@ -33,6 +33,7 @@ const Container = styled.div`
 		font-family:'Times New Roman', Times, serif ,
 			sans-serif;
       color: white;
+      
 	}
 	.wrapper {
 		.slider {
