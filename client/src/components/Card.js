@@ -23,7 +23,7 @@ const Card = ({ movieData }) => {
 				<div className="hover">
 					<div className="image-video-wrapper">
 						<img
-							src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaCor4AIV__zuNlgGZTSr424NdUudWBQKBrA&usqp=CAU://filmartgallery.com/cdn/shop/products/The-Avengers-Vintage-Movie-Poster-Original-1-Sheet-27x41_f7a83b7a-9d50-4743-b630-3fbd34b35e5a.jpg?v=1671051716"
+							src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
 							alt="Movie Poster"
 							onClick={() => navigate("/player")}
 						/>
@@ -40,7 +40,7 @@ const Card = ({ movieData }) => {
 							className="movieName"
 							onClick={() => navigate("/player")}
 						>
-							Avengers
+							{movieData.name}
 						</h3>
 						<div className="icons">
 							<IoPlayCircleSharp
@@ -58,8 +58,11 @@ const Card = ({ movieData }) => {
 					</div>
 					<div className="genre">
 						<ul>
-							<li>Action & Adventure</li>
-							<li>Science Fiction</li>
+						  {movieData.genres.map((genre)=>{
+								<li>
+									{genre}
+								</li>
+							})}
 						</ul>
 					</div>
 				</div>
