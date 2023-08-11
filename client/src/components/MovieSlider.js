@@ -28,16 +28,21 @@ const Container = styled.div`
 	position: relative;
 	padding: 2rem 0;
 	h1 {
-		margin-left: 50px;
+		margin-left: 5px;
 		font-size: 25px;
-		font-family: "Franklin Gothic Medium", "Arial Narrow", Arial,
+		font-family:'Times New Roman', Times, serif ,
 			sans-serif;
+      color: white;
 	}
-  .wrapper{
-    .slider{
-      display: flex;
-    }
-  }
+	.wrapper {
+		.slider {
+			display: flex;
+			width: max-content;
+			gap: 0.6rem;
+			transform: translateX(0px);
+			margin-left: 5px;
+		}
+	}
 `;
 
 export default MovieSlider;
