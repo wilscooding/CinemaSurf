@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./Card";
 import styled from "styled-components";
 
-const MovieSlider = ({ data, title }) => {
+export default React.memo(function MovieSlider({ data, title }) {
 	return (
 		<Container>
 			<h1>{title}</h1>
@@ -21,7 +21,7 @@ const MovieSlider = ({ data, title }) => {
 			</div>
 		</Container>
 	);
-};
+});
 
 const Container = styled.div`
 	gap: 0.7rem;
@@ -30,10 +30,8 @@ const Container = styled.div`
 	h1 {
 		margin-left: 5px;
 		font-size: 25px;
-		font-family:'Times New Roman', Times, serif ,
-			sans-serif;
-      color: white;
-      
+		font-family: "Times New Roman", Times, serif, sans-serif;
+		color: white;
 	}
 	.wrapper {
 		.slider {
@@ -45,5 +43,3 @@ const Container = styled.div`
 		}
 	}
 `;
-
-export default MovieSlider;

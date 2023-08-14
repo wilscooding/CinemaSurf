@@ -7,7 +7,7 @@ import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri";
 import { BiChevronDown } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 
-const Card = ({ movieData }) => {
+export default React.memo(function Card({ movieData }) {
 	const [Hover, setHover] = useState(false);
 	const navigate = useNavigate();
 	return (
@@ -58,10 +58,8 @@ const Card = ({ movieData }) => {
 					</div>
 					<div className="genre">
 						<ul>
-						  {movieData.genres.map((genre)=>{
-								<li>
-									{genre}
-								</li>
+							{movieData.genres.map((genre) => {
+								<li>{genre}</li>;
 							})}
 						</ul>
 					</div>
@@ -70,7 +68,7 @@ const Card = ({ movieData }) => {
 			;
 		</CardContainer>
 	);
-};
+});
 
 const CardContainer = styled.div`
 	margin-top: 1rem;
@@ -163,4 +161,3 @@ const CardContainer = styled.div`
 		}
 	}
 `;
-export default Card;
