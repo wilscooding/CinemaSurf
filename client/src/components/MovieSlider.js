@@ -1,17 +1,24 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Card from "./Card";
 import styled from "styled-components";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 export default React.memo(function MovieSlider({ data, title }) {
-
-  const [controlVisibility, setControlVisibility] = useState(false)
+	const [controlVisibility, setControlVisibility] = useState(false);
 
 	return (
-		<Container>
+		<Container
+			controlVisibility={controlVisibility}
+			onMouseEnter={() => setControlVisibility(true)}
+			onMouseLeave={() => setControlVisibility(false)}
+		>
 			<h1>{title}</h1>
 			<div className="wrapper">
-				<div className={`slider-action left`}>
+				<div
+					className={`slider-action left ${
+						!controlVisibility ? "none" : ""
+					}`}
+				>
 					<AiOutlineLeft />
 				</div>
 
@@ -26,7 +33,11 @@ export default React.memo(function MovieSlider({ data, title }) {
 						);
 					})}
 				</div>
-				<div className={`slider-action right`}>
+				<div
+					className={`slider-action right ${
+						!controlVisibility ? "none" : ""
+					}`}
+				>
 					<AiOutlineRight />
 				</div>
 			</div>
@@ -74,6 +85,9 @@ const Container = styled.div`
 		}
 		.right {
 			right: 0;
+		}
+		.none {
+			display: none;
 		}
 	}
 `;
