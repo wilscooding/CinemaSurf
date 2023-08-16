@@ -18,6 +18,7 @@ export default React.memo(function Card({ movieData }) {
 			<img
 				src={`https://image.tmdb.org/t/p/w500${movieData.image}`}
 				onClick={() => navigate("/player")}
+				alt="Movie poster"
 			/>
 			{Hover && (
 				<div className="hover">
@@ -77,7 +78,7 @@ const CardContainer = styled.div`
 	height: 100%;
 	cursor: pointer;
 	position: relative;
-	/* background-color: red; */
+
 	img {
 		border-radius: 0.2rem;
 		width: 100%;
